@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+#include "Passenger.h"
+#include "Car.h"
+#include "Hallway.h"
+#include "Request.h"
+
+using namespace std;
+
+//base floor and lowest floor 3rd 
+//highest floor 7
+//origin floor is always 3 for homework 3
+
+int main()
+{
+	int originFloor = 3;
+	int pcount = 1;
+	Car C1;
+	C1.setCarID("car1");
+
+	Passenger P1(pcount, originFloor);
+	int waitforP1 = P1.getCurLevel();
+	P1.setWaitTime(waitforP1, originFloor);
+	//P1.setPassengercount(1);
+	P1.SetHallwayUpButton();
+	P1.PressCarButton(5);
+	P1.Travel();
+	P1.travelsummary();
+
+	pcount++;
+	Passenger P2(pcount, originFloor);
+	int floorForWaitTime = P1.getCurLevel(); //get elevator's current location(previous travel's current floor)
+	P2.setWaitTime(floorForWaitTime, originFloor);
+	P2.SetHallwayUpButton();
+	P2.PressCarButton(7); //go to 7 th floor 
+	P2.Travel();
+	P2.travelsummary();
+
+	
+
+
+	pcount++;
+	Passenger P3(pcount, originFloor);
+
+	//DisplayResult();
+    std::cout << "Hello World!\n";
+}
